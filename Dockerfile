@@ -1,4 +1,4 @@
-FROM outstand/elixir:1.4.4
+FROM outstand/elixir:1.4.5
 MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
 RUN useradd -ms /bin/bash deploy && \
