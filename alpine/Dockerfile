@@ -3,7 +3,18 @@ MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
 RUN addgroup -S deploy && \
     adduser -S -G deploy deploy && \
-    apk add --no-cache ca-certificates wget curl openssl jq git bash nodejs yarn gnupg
+    apk add --no-cache \
+      ca-certificates \
+      wget \
+      curl \
+      openssl \
+      jq \
+      git \
+      bash \
+      nodejs \
+      yarn \
+      gnupg \
+      inotify-tools
 
 ENV YARN_VERSION 1.5.1
 
