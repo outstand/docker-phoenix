@@ -1,10 +1,9 @@
-FROM outstand/elixir:1.6.4
+FROM outstand/elixir:1.6.4-alpine
 MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
-RUN useradd -ms /bin/bash deploy && \
-      curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
-      apt-get install -y nodejs inotify-tools && \
-      rm -rf /var/lib/apt/lists/*
+RUN addgroup -S deploy && \
+    adduser -S -G deploy deploy && \
+    apk add --no-cache ca-certificates wget curl openssl jq git bash nodejs yarn gnupg
 
 ENV YARN_VERSION 1.5.1
 
