@@ -3,5 +3,6 @@ MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
 RUN apk add --no-cache \
       xvfb \
+      xdpyinfo \
       chromium \
       chromium-chromedriver
