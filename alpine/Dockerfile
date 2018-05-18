@@ -1,6 +1,6 @@
 FROM outstand/yarn as yarn
 
-FROM outstand/elixir:1.6.4-alpine
+FROM outstand/elixir:1.6.5-alpine
 MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
 RUN addgroup -S deploy && \

@@ -1,6 +1,6 @@
 FROM outstand/yarn as yarn
 
-FROM outstand/elixir:1.6.4
+FROM outstand/elixir:1.6.5
 MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
 RUN useradd -ms /bin/bash deploy && \
