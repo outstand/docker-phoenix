@@ -1,6 +1,6 @@
 FROM outstand/yarn as yarn
 
-FROM outstand/elixir:1.6.5
+FROM outstand/elixir:1.6.6
 MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
 RUN useradd -ms /bin/bash deploy && \
@@ -10,7 +10,7 @@ RUN useradd -ms /bin/bash deploy && \
 
 COPY --from=yarn /bin/yarn /bin/
 
-ENV PHOENIX_VERSION 1.3.2
+ENV PHOENIX_VERSION 1.3.4
 
 RUN su-exec deploy mix local.hex --force && \
       su-exec deploy mix local.rebar --force && \
