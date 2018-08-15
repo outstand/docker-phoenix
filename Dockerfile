@@ -16,3 +16,6 @@ RUN su-exec deploy mix local.hex --force && \
       su-exec deploy mix local.rebar --force && \
       su-exec deploy mix archive.install --force \
         https://github.com/phoenixframework/archives/raw/master/phx_new-${PHOENIX_VERSION}.ez
+
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT ["/sbin/tini", "-g", "--", "/docker-entrypoint.sh"]
