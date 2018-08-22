@@ -1,10 +1,11 @@
 FROM outstand/yarn as yarn
+FROM outstand/fixuid as fixuid
 
 FROM outstand/elixir:1.6.6-alpine
 MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
-RUN addgroup -S deploy && \
-    adduser -S -G deploy deploy && \
+RUN addgroup -g 1000 -S deploy && \
+    adduser -u 1000 -S -G deploy deploy && \
     apk add --no-cache \
       ca-certificates \
       wget \
@@ -16,6 +17,10 @@ RUN addgroup -S deploy && \
       nodejs \
       gnupg \
       inotify-tools
+
+COPY --from=fixuid /usr/local/bin/fixuid /usr/local/bin/fixuid
+COPY --from=fixuid /etc/fixuid/config.yml /etc/fixuid/config.yml
+RUN chmod 4755 /usr/local/bin/fixuid
 
 COPY --from=yarn /bin/yarn /bin/
 

@@ -1,12 +1,18 @@
 FROM outstand/yarn as yarn
+FROM outstand/fixuid as fixuid
 
 FROM outstand/elixir:1.6.6
 MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
-RUN useradd -ms /bin/bash deploy && \
+RUN groupadd -g 1000 deploy && \
+      useradd -u 1000 -g deploy -ms /bin/bash deploy && \
       curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
       apt-get install -y nodejs inotify-tools && \
       rm -rf /var/lib/apt/lists/*
+
+COPY --from=fixuid /usr/local/bin/fixuid /usr/local/bin/fixuid
+COPY --from=fixuid /etc/fixuid/config.yml /etc/fixuid/config.yml
+RUN chmod 4755 /usr/local/bin/fixuid
 
 COPY --from=yarn /bin/yarn /bin/
 
