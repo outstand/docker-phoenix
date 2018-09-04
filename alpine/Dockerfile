@@ -5,7 +5,7 @@ FROM outstand/elixir:1.6.6-alpine
 MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
 RUN addgroup -g 1000 -S deploy && \
-    adduser -u 1000 -S -G deploy deploy && \
+    adduser -u 1000 -S -s /bin/bash -G deploy deploy && \
     apk add --no-cache \
       ca-certificates \
       wget \
