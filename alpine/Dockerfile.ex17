@@ -16,7 +16,8 @@ RUN addgroup -g 1000 -S deploy && \
       bash \
       nodejs \
       gnupg \
-      inotify-tools
+      inotify-tools \
+      tar
 
 COPY --from=fixuid /usr/local/bin/fixuid /usr/local/bin/fixuid
 COPY --from=fixuid /etc/fixuid/config.yml /etc/fixuid/config.yml
