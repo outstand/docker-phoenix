@@ -1,5 +1,5 @@
-FROM outstand/phoenix:1.3.4-alpine
-MAINTAINER Ryan Schlesinger <ryan@outstand.com>
+FROM outstand/phoenix:1.4.2-alpine
+LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
 
 RUN apk add --no-cache \
       xvfb \

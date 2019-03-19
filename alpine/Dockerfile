@@ -1,8 +1,8 @@
 FROM outstand/yarn as yarn
 FROM outstand/fixuid as fixuid
 
-FROM outstand/elixir:1.6.6-alpine
-MAINTAINER Ryan Schlesinger <ryan@outstand.com>
+FROM outstand/elixir:1.8.1-alpine
+LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
 
 RUN addgroup -g 1000 -S deploy && \
     adduser -u 1000 -S -s /bin/bash -G deploy deploy && \
@@ -24,12 +24,11 @@ RUN chmod 4755 /usr/local/bin/fixuid
 
 COPY --from=yarn /bin/yarn /bin/
 
-ENV PHOENIX_VERSION 1.3.4
+ENV PHOENIX_VERSION 1.4.2
 
 RUN su-exec deploy mix local.hex --force && \
       su-exec deploy mix local.rebar --force && \
-      su-exec deploy mix archive.install --force \
-        https://github.com/phoenixframework/archives/raw/master/phx_new-${PHOENIX_VERSION}.ez
+      su-exec deploy mix archive.install --force hex phx_new ${PHOENIX_VERSION}
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/sbin/tini", "-g", "--", "/docker-entrypoint.sh"]
