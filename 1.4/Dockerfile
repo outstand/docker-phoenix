@@ -1,12 +1,12 @@
 FROM outstand/yarn as yarn
 FROM outstand/fixuid as fixuid
 
-FROM outstand/elixir:1.8.1
+FROM outstand/elixir:1.8.2
 LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
 
 RUN groupadd -g 1000 deploy && \
       useradd -u 1000 -g deploy -ms /bin/bash deploy && \
-      curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+      curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
       apt-get install -y nodejs inotify-tools && \
       rm -rf /var/lib/apt/lists/*
 

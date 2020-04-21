@@ -1,7 +1,7 @@
 FROM outstand/yarn as yarn
 FROM outstand/fixuid as fixuid
 
-FROM outstand/elixir:1.8.1-alpine
+FROM outstand/elixir:1.8.2-alpine
 LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
 
 RUN addgroup -g 1000 -S deploy && \
