@@ -1,4 +1,4 @@
-FROM outstand/phoenix:1.5.1-alpine
+FROM outstand/phoenix:1.5.3-alpine
 LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
 
 RUN apk add --no-cache \

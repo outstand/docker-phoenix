@@ -16,7 +16,7 @@ RUN chmod 4755 /usr/local/bin/fixuid
 
 COPY --from=yarn /bin/yarn /bin/
 
-ENV PHOENIX_VERSION 1.5.1
+ENV PHOENIX_VERSION 1.5.3
 
 RUN su-exec deploy mix local.hex --force && \
       su-exec deploy mix local.rebar --force && \
