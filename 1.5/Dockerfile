@@ -1,7 +1,7 @@
 FROM outstand/yarn as yarn
 FROM outstand/fixuid as fixuid
 
-FROM outstand/elixir:1.12.2
+FROM outstand/elixir:1.12.3
 LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
 
 RUN groupadd -g 1000 deploy && \
@@ -16,7 +16,7 @@ RUN chmod 4755 /usr/local/bin/fixuid
 
 COPY --from=yarn /bin/yarn /bin/
 
-ENV PHOENIX_VERSION 1.5.9
+ENV PHOENIX_VERSION 1.5.12
 
 RUN su-exec deploy mix local.hex --force && \
       su-exec deploy mix local.rebar --force && \
