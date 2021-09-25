@@ -1,4 +1,4 @@
-FROM outstand/phoenix:1.6.0-rc.0-alpine
+FROM outstand/phoenix:1.6.0-alpine
 LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
 
 RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories && \
@@ -9,7 +9,7 @@ RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/ap
       nss \
       freetype \
       ttf-freefont \
-      chromium \
-      chromium-chromedriver
-      # chromium@edge \
-      # chromium-chromedriver@edge
+      chromium@edge \
+      chromium-chromedriver@edge
+      # chromium \
+      # chromium-chromedriver
