@@ -1,4 +1,4 @@
-FROM outstand/phoenix:1.6.0-alpine
+FROM outstand/phoenix:1.6.2-alpine
 LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
 
 RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories && \
