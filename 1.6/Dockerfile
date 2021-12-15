@@ -1,12 +1,12 @@
 FROM outstand/yarn as yarn
 FROM outstand/fixuid as fixuid
 
-FROM outstand/elixir:1.12.3
+FROM outstand/elixir:1.13.1
 LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
 
 RUN groupadd -g 1000 deploy && \
       useradd -u 1000 -g deploy -ms /bin/bash deploy && \
-      curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+      curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
       apt-get install -y nodejs inotify-tools && \
       rm -rf /var/lib/apt/lists/*
 
@@ -16,7 +16,7 @@ RUN chmod 4755 /usr/local/bin/fixuid
 
 COPY --from=yarn /bin/yarn /bin/
 
-ENV PHOENIX_VERSION 1.6.2
+ENV PHOENIX_VERSION 1.6.4
 
 RUN su-exec deploy mix local.hex --force && \
       su-exec deploy mix local.rebar --force && \

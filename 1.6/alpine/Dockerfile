@@ -1,7 +1,7 @@
 FROM outstand/yarn as yarn
 FROM outstand/fixuid as fixuid
 
-FROM 786715713882.dkr.ecr.us-east-1.amazonaws.com/elixir:1.12.3-alpine
+FROM 786715713882.dkr.ecr.us-east-1.amazonaws.com/elixir:1.13.1-alpine
 LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
 
 RUN addgroup -g 1000 -S deploy && \
@@ -24,7 +24,7 @@ RUN chmod 4755 /usr/local/bin/fixuid
 
 COPY --from=yarn /bin/yarn /bin/
 
-ENV PHOENIX_VERSION 1.6.2
+ENV PHOENIX_VERSION 1.6.4
 
 RUN su-exec deploy mix local.hex --force && \
       su-exec deploy mix local.rebar --force && \
