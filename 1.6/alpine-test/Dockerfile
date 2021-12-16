@@ -9,7 +9,8 @@ RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/ap
       nss \
       freetype \
       ttf-freefont \
-      chromium@edge \
-      chromium-chromedriver@edge
-      # chromium \
-      # chromium-chromedriver
+      # libstdc++@edge \
+      # chromium@edge \
+      # chromium-chromedriver@edge
+      chromium \
+      chromium-chromedriver
